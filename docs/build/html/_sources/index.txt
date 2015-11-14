@@ -25,7 +25,7 @@
 	---
 	
 	
-.. function:: pyfunc()
+.. function:: pyfuncs()
 
    Описание функции Python.
    
