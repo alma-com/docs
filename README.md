@@ -1,1 +1,1 @@
-<a href="http://alma-v4.readthedocs.org/">Документация для разработчиков ALMA.CMS v4</a>
+<a href="http://alma-v4.readthedocs.org/">Р”РѕРєСѓРјРµРЅС‚Р°С†РёСЏ РґР»СЏ СЂР°Р·СЂР°Р±РѕС‚С‡РёРєРѕРІ ALMA.CMS v4</a>
