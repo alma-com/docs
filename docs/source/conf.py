@@ -48,7 +48,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'ALMA.CMS v4'
+project = u'ALMA.CMS v5'
 copyright = u'2015, Alexandr Zubarev'
 author = u'Alexandr Zubarev'
 
@@ -212,7 +212,7 @@ html_show_copyright = True
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'docs-v4doc'
+htmlhelp_basename = 'docs-v5doc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -234,7 +234,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  (master_doc, 'docs-v4.tex', u'docs-v4 Documentation',
+  (master_doc, 'docs-v5.tex', u'docs-v5 Documentation',
    u'Alexandr Zubarev', 'manual'),
 ]
 
@@ -264,7 +264,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'docs-v4', u'docs-v4 Documentation',
+    (master_doc, 'docs-v5', u'docs-v5 Documentation',
      [author], 1)
 ]
 
@@ -278,8 +278,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  (master_doc, 'docs-v4', u'docs-v4 Documentation',
-   author, 'docs-v4', 'One line description of project.',
+  (master_doc, 'docs-v5', u'docs-v5 Documentation',
+   author, 'docs-v5', 'One line description of project.',
    'Miscellaneous'),
 ]
 
