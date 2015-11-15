@@ -1,0 +1,242 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Прохождение запроса &mdash; Документация ALMA.CMS v4 1</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Документация ALMA.CMS v4 1" href="index.html"/>
+        <link rel="next" title="Структура сайта" href="structure.html"/>
+        <link rel="prev" title="Документация для разработчиков ALMA v4" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ALMA.CMS v4
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Прохождение запроса</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Начало</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Ядро</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Шаблон</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Вывод блоков</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="structure.html">Структура сайта</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Это пример</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ALMA.CMS v4</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Прохождение запроса</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Прохождение запроса<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id2">
+<h2>Начало<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Входная точка для большинства запросов к вашему сайту это файл <code class="docutils literal"><span class="pre">index.html</span></code>.
+Запросы направляются в этот файл настройками прописанными в файле <code class="docutils literal"><span class="pre">.htaccess</span></code>.</p>
+</div>
+<div class="section" id="id3">
+<h2>Ядро<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Центральное место всего сайта является файл <code class="docutils literal"><span class="pre">auto.p</span></code>. Данный файл содержит большинство функций используемых при разработке сайта. Этот файл автоматически подключается ко всем файлам сайта. Первым делом из <code class="docutils literal"><span class="pre">auto.p</span></code> срабатывает функция <code class="docutils literal"><span class="pre">&#64;main[]</span></code>. Далее в функции <code class="docutils literal"><span class="pre">&#64;body[]</span></code> подключается шаблон, по умолчанию - <code class="docutils literal"><span class="pre">\tmpl\main\index.html</span></code>.</p>
+</div>
+<div class="section" id="id4">
+<h2>Шаблон<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Шаблон сайта содержит верстку и вызов функций. Одна из важных вызываемых в шаблоне функций - <code class="docutils literal"><span class="pre">^text[]</span></code>. Данная функция выводить содержимое основной части заполненное в административной панели. Сам вывод блоков происходит в файле <code class="docutils literal"><span class="pre">\class\text_extended.p</span></code>.</p>
+</div>
+<div class="section" id="id5">
+<h2>Вывод блоков<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Как уже говорилось выше блоки админстративной панели выводятся в файле <code class="docutils literal"><span class="pre">\class\text_extended.p</span></code>. <strong>В данном файле не рекомендуется что либо менять. Только позволительно подключать новые блоки.</strong></p>
+<p>Рассмотрим пример подключение нового блока <code class="docutils literal"><span class="pre">bnewBlock</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre>#brick
+^use[/class/block/bcatalog.p]
+...
+^use[/class/block/bnewBlock.p]
+
+$brick[
+   $.bcatalog[$bcatalog:CLASS]
+   ...
+   $.bnewBlock[$bnewBlock:CLASS]
+]
+</pre></div>
+</div>
+<p>Сами блоки располагаются <code class="docutils literal"><span class="pre">\class\block\bnewBlock.p</span></code>, где bnewBlock - название блока. В данном блоке должна быть определена одна функция <code class="docutils literal"><span class="pre">&#64;show[iid]</span></code>. Так как именно данную функцию вызывает класс <code class="docutils literal"><span class="pre">\class\text_extended.p</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="structure.html" class="btn btn-neutral float-right" title="Структура сайта" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Документация для разработчиков ALMA v4" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Alexandr Zubarev.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
