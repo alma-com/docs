@@ -15,4 +15,4 @@
 
    lifecycle
    structure
-   example
+   global-func
