@@ -130,6 +130,98 @@
             
   <div class="section" id="id1">
 <h1>Глобальные функции<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<dl class="function">
+<dt>
+<code class="descname">&#64;text[]</code></dt>
+<dd><p>Вывод основной части контента заполненного в административной панели.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;h_menu[]</code></dt>
+<dd><p>Вывод главного меню. Обычно логика формирования меню лежит <code class="docutils literal"><span class="pre">$tmpl_path/p/h_menu.p</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;v_menu[]</code></dt>
+<dd><p>Вывод дополнительного меню. Обычно логика формирования меню лежит <code class="docutils literal"><span class="pre">$tmpl_path/p/v_menu.p</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;c_menu[]</code></dt>
+<dd><p>Вывод меню на основе разделов каталога. Обычно логика формирования меню лежит <code class="docutils literal"><span class="pre">$tmpl_path/p/с_menu.p</span></code>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;err404[]</code></dt>
+<dd><p>Вывод содержимого 404 ошибки.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;title[]</code></dt>
+<dd><p>Вывод title страницы.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;keywords[]</code></dt>
+<dd><p>Вывод keywords страницы.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;descript[]</code></dt>
+<dd><p>Вывод description страницы.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;descript[]</code></dt>
+<dd><p>Вывод description страницы.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;check_user[]</code></dt>
+<dd><p>Проверка что пользователь зарегестрирован. Если зарегистирован, то определяются следующие переменные:</p>
+<div class="highlight-python"><div class="highlight"><pre>$isRegUser[yes]
+$userid[$is.user_id] - id пользователя
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;loadparam[]</code></dt>
+<dd><p>Функция возвращает hash c  глобальными настройками сайта <code class="docutils literal"><span class="pre">http://site.ru/manage/setting/</span></code> в переменную <code class="docutils literal"><span class="pre">$param</span></code>. Обычно функция вызывается перед отправкой почты.</p>
+<div class="highlight-python"><div class="highlight"><pre>$param.address - Адрес
+$param.inn - ИНН
+$param.kpp - КПП
+$param.bik - БИК
+$param.company  - Название компании
+$param.email - E-mail
+$param.postavchik - Поставщик
+$param.tel - Телефон
+$param.fax - Факс
+$param.rschet - Расчётный счёт
+$param.kschet - Корр. счёт
+$param.rukovod - Руководитель
+$param.buhgalter - Бухгалтер
+$param.bank - Банк
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;SendMailToAdmin[]</code></dt>
+<dd><p>Отправка почты <cite>В Ваш Интернет-магазин поступил заказ</cite> владельцу сайта.</p>
+</dd></dl>
+
 </div>
 
 
