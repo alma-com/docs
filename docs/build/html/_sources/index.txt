@@ -13,5 +13,4 @@
 .. toctree::
    :maxdepth: 2
 
-   structure
-   example
+   view

@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Представления &mdash; Документация ALMA.CMS v5 1</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Документация ALMA.CMS v5 1" href="index.html"/>
+        <link rel="prev" title="Документация для разработчиков ALMA v5" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ALMA.CMS v5
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Представления</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Основы использования</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Передача данных в представление</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Передача данных во все представления</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ALMA.CMS v5</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Представления</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Представления<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="id2">
+<h2>Основы использования<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Представления (views) содержат HTML-код, передаваемый вашим приложением. Это удобный способ разделения бизнес-логики и логики отображения информации. Представления находятся в каталоге <code class="docutils literal"><span class="pre">class/block/nameYouBlock/views</span></code>.</p>
+<p>Простое представление выглядит примерно так:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;!-- Представление class/block/bnews/views/detail.pt --&gt;
+
+&lt;div class=&quot;bnews&quot;&gt;
+    &lt;h1&gt;$name&lt;/h1&gt;
+    &lt;div class=&quot;date&quot;&gt;$date&lt;/div&gt;
+    &lt;a class=&quot;photo fancybox_bgal&quot; href=&quot;/images/bnews/b_${path}&quot;&gt;
+        &lt;img src=&quot;/images/bnews/m_$path&quot; alt=&quot;&quot;&gt;
+    &lt;/a&gt;
+    }
+    ^untaint{$full_text}
+&lt;/div&gt;
+</pre></div>
+</div>
+<p>Подключение представления выглядет примерно так:</p>
+<div class="highlight-python"><div class="highlight"><pre>$view[^registry:get[view]]
+^view.with[name;Наименование новости]
+^view.with[date;12 Сентября]
+^view.with[path;/bank/image.jpg]
+^view.with[full_text;Полный полный текст]
+^view.render[/class/block/bnews/views/detail.pt]
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Передача данных в представление<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre>^view.with[name;Наименование новости]
+</pre></div>
+</div>
+<p>В примере выше переменная <code class="docutils literal"><span class="pre">$name</span></code> со значением <code class="docutils literal"><span class="pre">Наименование</span> <span class="pre">новости</span></code> станет доступной для представления.</p>
+</div>
+<div class="section" id="id4">
+<h2>Передача данных во все представления<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Иногда вам нужно передать данные во все представления вашего приложения. Для этого необходимо в <code class="docutils literal"><span class="pre">auto.p</span></code> в методе <code class="docutils literal"><span class="pre">&#64;main[]</span></code>, после инициализации представления <code class="docutils literal"><span class="pre">$view[^view::create[]]</span></code> дописать следующее:</p>
+<div class="highlight-python"><div class="highlight"><pre>@main[]
+^use[/class/blocks.p]
+^use[/class/settings/settings.p]
+^use[/class/html.p]
+^use[/class/data/registry.p]
+^use[/class/data/view.p]
+
+^use[/class/user_func.p]
+
+^connect[$connect_string]{
+    ^get_param_global[]
+    ^get_param_local[]
+    $html[^html::init[$tmpl_info]]
+    $blocksinit[^blocks::init[$param_page]]
+    $breadcrumb[^breadcrumb[$param_page]]
+
+    $view[^view::create[]]
+    ^view.share[nameSite;Альма] -       Пример подключение переменной во все шаблоны
+
+    ^registry:set[tmpl_path;$tmpl_path]
+    ^registry:set[view;$view]
+
+    ^all_content[]
+}
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Документация для разработчиков ALMA v5" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Alexandr Zubarev.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
