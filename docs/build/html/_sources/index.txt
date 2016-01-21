@@ -13,5 +13,6 @@
 .. toctree::
    :maxdepth: 2
 
+   install
    provider
    view
