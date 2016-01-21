@@ -13,4 +13,5 @@
 .. toctree::
    :maxdepth: 2
 
+   provider
    view

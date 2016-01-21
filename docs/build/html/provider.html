@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Документация для разработчиков ALMA v5 &mdash; Документация ALMA.CMS v5 1</title>
+  <title>Провайдер &mdash; Документация ALMA.CMS v5 1</title>
   
 
   
@@ -32,8 +32,9 @@
   
 
   
-    <link rel="top" title="Документация ALMA.CMS v5 1" href="#"/>
-        <link rel="next" title="Провайдер" href="provider.html"/> 
+    <link rel="top" title="Документация ALMA.CMS v5 1" href="index.html"/>
+        <link rel="next" title="Представления" href="view.html"/>
+        <link rel="prev" title="Документация для разработчиков ALMA v5" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -51,7 +52,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> ALMA.CMS v5
+            <a href="index.html" class="icon icon-home"> ALMA.CMS v5
           
 
           
@@ -82,8 +83,11 @@
           
             
             
-                <ul>
-<li class="toctree-l1"><a class="reference internal" href="provider.html">Провайдер</a></li>
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Провайдер</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#appprovider">appProvider</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a></li>
 </ul>
 
@@ -98,7 +102,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">ALMA.CMS v5</a>
+        <a href="index.html">ALMA.CMS v5</a>
       </nav>
 
 
@@ -113,9 +117,9 @@
 
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Документация для разработчиков ALMA v5</li>
+    <li>Провайдер</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -127,23 +131,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="alma-v5">
-<h1>Документация для разработчиков ALMA v5<a class="headerlink" href="#alma-v5" title="Ссылка на этот заголовок">¶</a></h1>
-<div class="section" id="id1">
-<h2>Оглавление:<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="provider.html">Провайдер</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="provider.html#appprovider">appProvider</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="view.html#id2">Основы использования</a></li>
-<li class="toctree-l2"><a class="reference internal" href="view.html#id3">Вывод представления</a></li>
-<li class="toctree-l2"><a class="reference internal" href="view.html#id4">Передача данных во все представления</a></li>
-</ul>
-</li>
-</ul>
+  <div class="section" id="id1">
+<h1>Провайдер<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<div class="section" id="appprovider">
+<h2>appProvider<a class="headerlink" href="#appprovider" title="Ссылка на этот заголовок">¶</a></h2>
+<p>appProvider - провайдер приложения лежит в основе «первоначальной загрузки» всего сайта. Находиться данный провайдер <code class="docutils literal"><span class="pre">/providers/appProvider.p</span></code>.</p>
+<p>Данный провайлер нужен для подключения пользовательских классов, которые должны быть подключены на всем сайте:</p>
+<div class="highlight-python"><div class="highlight"><pre>^use[/class/userClass.p]
+</pre></div>
+</div>
+<p>Также для определения переменных которые подключаются во все шаблоны:</p>
+<div class="highlight-python"><div class="highlight"><pre>^view:share[var;value]
+</pre></div>
+</div>
+<p>Для сохранение переменных, объектов, позорного кода в Реестр, чтобы потом из Реестра в нужном вам месте вытянуть значения.</p>
+<div class="highlight-python"><div class="highlight"><pre>^registry:set[shame;2*2=4]
+</pre></div>
 </div>
 </div>
 </div>
@@ -155,8 +158,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="provider.html" class="btn btn-neutral float-right" title="Провайдер" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="view.html" class="btn btn-neutral float-right" title="Представления" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+      
+        <a href="index.html" class="btn btn-neutral" title="Документация для разработчиков ALMA v5" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
