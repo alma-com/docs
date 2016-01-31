@@ -49,7 +49,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'ALMA.CMS v5'
-copyright = u'2015, Alexandr Zubarev'
+copyright = u'2016, Alexandr Zubarev'
 author = u'Alexandr Zubarev'
 
 # The version info for the project you're documenting, acts as replacement for
