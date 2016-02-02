@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Провайдер &mdash; Документация ALMA.CMS v5 1</title>
+  <title>Ядро доработок &mdash; Документация ALMA.CMS v5 1</title>
   
 
   
@@ -85,8 +85,8 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Провайдер</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#appprovider">appProvider</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Ядро доработок</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Помощники</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a></li>
@@ -120,7 +120,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Провайдер</li>
+    <li>Ядро доработок</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -133,12 +133,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>Провайдер<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
-<div class="section" id="appprovider">
-<h2>appProvider<a class="headerlink" href="#appprovider" title="Ссылка на этот заголовок">¶</a></h2>
-<p>appProvider - провайдер приложения лежит в основе «первоначальной загрузки» всего сайта. Находиться данный провайдер <code class="docutils literal"><span class="pre">/providers/appProvider.p</span></code>.</p>
-<p>Данный провайдер нужен для подключения и использования пользовательских классов, которые должны отрабатывать перед загрузкой всего сайта:</p>
-<div class="highlight-python"><div class="highlight"><pre>^use[/class/userClass.p]
+<h1>Ядро доработок<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Ядро доработок (kernel) в приложении лежит в основе «первоначальной загрузки» всего сайта. Находиться данный провайдер <code class="docutils literal"><span class="pre">/app/kernel.p</span></code>.</p>
+<p>Данный файл нужен для подключение и использоватния классов помощников, которые должны отрабатывать перед загрузкой всего сайта:</p>
+<div class="highlight-python"><div class="highlight"><pre>^use[/app/helpers/alma.p]
+^alma:num_decline[102;сообщение;сообщения;сообщений]
 </pre></div>
 </div>
 <p>Также для определения переменных которые подключаются во все шаблоны:</p>
@@ -149,6 +148,10 @@
 <div class="highlight-python"><div class="highlight"><pre>^registry:set[shame;2*2=4]
 </pre></div>
 </div>
+<div class="section" id="id2">
+<h2>Помощники<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Помощники - это пользовательские классы, которые расширяют функционал сайта.</p>
+<p>Пример помощника можно найти <code class="docutils literal"><span class="pre">/app/helpers/alma.p</span></code>. Данный класс содержит один метод <code class="docutils literal"><span class="pre">num_decline</span></code>, который позволяет склоненить имена существительных после числительных.</p>
 </div>
 </div>
 
