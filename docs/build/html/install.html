@@ -33,7 +33,7 @@
 
   
     <link rel="top" title="Документация ALMA.CMS v5 1" href="index.html"/>
-        <link rel="next" title="Провайдер" href="provider.html"/>
+        <link rel="next" title="Ядро доработок" href="provider.html"/>
         <link rel="prev" title="Документация для разработчиков ALMA v5" href="index.html"/> 
 
   
@@ -85,15 +85,13 @@
             
                 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Установка</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#git">Система контроля версий Git</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#xampp">Настройка локального сервера XAMPP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#alma-cms-v5">Локальная установка ALMA.CMS v5</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id2">Создание репозитория для сайта</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">Деплой на боевой сервер</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">Автоматизация деплоя</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Автоматизация деплоя</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="provider.html">Провайдер</a></li>
+<li class="toctree-l1"><a class="reference internal" href="provider.html">Ядро доработок</a></li>
 <li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a></li>
 </ul>
 
@@ -139,70 +137,25 @@
             
   <div class="section" id="id1">
 <h1>Установка<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
-<p>Перед установкой ALMA.CMS необходимо установить систему контроля версий Git и настроить локальный сервер.</p>
-<div class="section" id="git">
-<h2>Система контроля версий Git<a class="headerlink" href="#git" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Рекомендуется пройти <a class="reference external" href="http://githowto.com/ru">Курс обучения Git на русском</a>. В данном курсе рассматривается установка, настройка и работа с Git.</p>
-</div>
-<div class="section" id="xampp">
-<h2>Настройка локального сервера XAMPP<a class="headerlink" href="#xampp" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Для примера будем рассматривать настройку <a class="reference external" href="https://www.apachefriends.org/ru/index.html">XAMPP</a> на Windows 7.
-Сама установка простая и настройки менять не нужно.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Предупреждение</p>
-<p class="last">Если XAMPP не запускается, то скорее всего Skype занял 80-ый порт. (Skype -&gt; Заходим в настройки Скайпа -&gt; Дополнительно -&gt; Соединение -&gt; снимаем галочку <cite>Использовать порты 80 и 443 в качестве альтернативных</cite> -&gt; Перегружаем Skype)</p>
-</div>
-<p>Для того чтобы создать локальный домен, необходимо:</p>
-<ol class="arabic simple">
-<li>В <code class="docutils literal"><span class="pre">C:\xampp\htdocs</span></code> создать папку с именем, с которым вы хотите создать домен, например <code class="docutils literal"><span class="pre">mysite.local</span></code>.</li>
-<li>В <code class="docutils literal"><span class="pre">C:\xampp\apache\conf\extra\httpd-vhosts.conf</span></code> необходимо написать следующее:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre>&lt;VirtualHost *:80&gt;
-    ServerAdmin webmaster@mysite.local
-    DocumentRoot &quot;C:/xampp/htdocs/mysite.local&quot;
-    ServerName mysite.local
-    ServerAlias www.mysite.local
-    ErrorLog &quot;logs/error.log&quot;
-    CustomLog &quot;logs/access.log&quot; combined
-&lt;/VirtualHost&gt;
-</pre></div>
-</div>
-<p>Если вам нужно чтобы <code class="docutils literal"><span class="pre">localhost</span></code> работал, то допишете в файл следующее:</p>
-<div class="highlight-python"><div class="highlight"><pre>&lt;VirtualHost *:80&gt;
-    ServerName localhost
-    DocumentRoot &quot;C:/xampp/htdocs/xampp&quot;
-&lt;/VirtualHost&gt;
-</pre></div>
-</div>
-</div></blockquote>
-<ol class="arabic simple" start="3">
-<li>В <code class="docutils literal"><span class="pre">C:\Windows\System32\drivers\etc\host</span></code> необходимо написать следующее:</li>
-</ol>
-<blockquote>
-<div><div class="highlight-python"><div class="highlight"><pre>127.0.0.1     mysite.local
-</pre></div>
-</div>
-</div></blockquote>
-</div>
 <div class="section" id="alma-cms-v5">
 <h2>Локальная установка ALMA.CMS v5<a class="headerlink" href="#alma-cms-v5" title="Ссылка на этот заголовок">¶</a></h2>
-<p>После того как был установлен Git и настроен локальный домен, далее если не установлен на сервере <a class="reference external" href="http://www.parser.ru/">Parser3</a>, то его нужно установить. Для этого необходимо скачать <a class="reference external" href="http://www.parser.ru/download/win32/">Программу установки для Win32</a> и установить его в папку <code class="docutils literal"><span class="pre">C:\xampp\cgi</span></code>.</p>
-<p>Далее необходимо склонировать v5 в папку <code class="docutils literal"><span class="pre">mysite.local</span></code>:</p>
+<p>В данном примере рассматривается установка ALMA.CMS на локальный сервер XAMPP под ОС Window 7.
+Если на сервере не установлен <a class="reference external" href="http://www.parser.ru/">Parser3</a>, то для установки необходимо скачать <a class="reference external" href="http://www.parser.ru/download/win32/">Программу установки для Win32</a> и установить его в папку <code class="docutils literal"><span class="pre">C:\xampp\cgi-bin</span></code>.</p>
+<p>Cклонировать ALMA.CMS v5 в папку <code class="docutils literal"><span class="pre">mysite.local</span></code> можно следующими командами:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd /C/xampp/htdocs/
 git clone https://bitbucket.org/alma-com/v5.git mysite.local
 cd mysite.local
 </pre></div>
 </div>
-<p>На данный момент актуальная версия CMS хранится в ветке <code class="docutils literal"><span class="pre">develop</span></code>, чтобы на нее переключиться и cделать её <code class="docutils literal"><span class="pre">master</span></code>, необходимо выполнить следующую команду:</p>
+<p>На данный момент актуальная версия CMS хранится в ветке <code class="docutils literal"><span class="pre">develop</span></code>, чтобы на нее переключиться и cделать её <code class="docutils literal"><span class="pre">master</span></code>, необходимо выполнить следующии команды:</p>
 <div class="highlight-python"><div class="highlight"><pre>git checkout develop
 git branch -D master
 git branch -m master
 </pre></div>
 </div>
-<p>После этого необходимо настроить БД. Для этого переходим по URL <code class="docutils literal"><span class="pre">http://localhost/phpmyadmin</span></code>, создаем базу данных <code class="docutils literal"><span class="pre">mysite</span></code> в кодировке UTF-8 и импортируем файл <code class="docutils literal"><span class="pre">C:/xampp/htdocs/mysite.local/v5.sql</span></code></p>
+<p>После этого необходимо импортировать БД в кодировке UTF-8. Файл для импорта БД называется <code class="docutils literal"><span class="pre">v5.sql</span></code></p>
 <p>Далее необходимо скачать <a class="reference external" href="http://www.xnview.com/en/nconvert/">NConvert для Windows</a> и файл <code class="docutils literal"><span class="pre">nconvert.exe</span></code> расположить <code class="docutils literal"><span class="pre">C:/xampp/htdocs/mysite.local/cgi-bin/</span></code>.</p>
-<p>Отлично, осталось немного. Находим в корне нашего сайта файл <code class="docutils literal"><span class="pre">config.example.p</span></code>, его необходимо скопировать и переименовать в <code class="docutils literal"><span class="pre">config.p</span></code>. В этом файле настраивается подключение к БД и путь к NConvert. Вот что должно у вас получиться:</p>
+<p>Отлично, осталось немного. Находим в корне сайта файл <code class="docutils literal"><span class="pre">config.example.p</span></code>, его необходимо скопировать и переименовать в <code class="docutils literal"><span class="pre">config.p</span></code>. В этом файле настраивается подключение к БД и путь к NConvert. Вот что должно у вас получиться:</p>
 <div class="highlight-python"><div class="highlight"><pre>$sql_table[mysite]
 $sql_login[root]
 $sql_pass[]
@@ -218,7 +171,7 @@ $nconvert_name[nconvert.exe]
 </div>
 <div class="section" id="id2">
 <h2>Создание репозитория для сайта<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
-<p>После того как сайт был локально развернут, необходимо для него создать репозиторий и слить в него все данные. Для примера рассматривается создание репозитория в <a class="reference external" href="https://bitbucket.org">Bitbucket</a>.
+<p>После того как сайт был локально развернут, необходимо создать репозиторий и слить в него все данные. Для примера рассматривается создание репозитория в <a class="reference external" href="https://bitbucket.org">Bitbucket</a>.
 Находим кнопку <a class="reference external" href="https://bitbucket.org/repo/create">Create repository</a>, имя репозитория вводим <code class="docutils literal"><span class="pre">mysite.ru</span></code> и сохраняем.</p>
 <p>Далее в Git bash необходимо выполнить следующие команды:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd /C/xampp/htdocs/
@@ -232,9 +185,7 @@ git push -u origin --tags # pushes up any tags
 </div>
 <div class="section" id="id3">
 <h2>Деплой на боевой сервер<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
-<p>Для примера будет рассматриваться боевой сервер на ОС linux, с установленным Git, ISPmanager и с возможностью генерации открытого SSH-ключа.</p>
-<p>Сперва необходимо в панеле управления ISPmanager создать пользователя <code class="docutils literal"><span class="pre">mysite</span></code> и создать домен <code class="docutils literal"><span class="pre">mysite.ru</span></code>.</p>
-<p>После этого для данного пользователя необходимо сгененрировать открытый SSH-ключ.</p>
+<p>Первым делом необходимо сгенерировать открытый SSH-ключ для пользователя, в котором будет распологаться сайт.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Предупреждение</p>
 <p class="last">Если у пользователя уже имеется сгенерированный открытый SSH-ключ, то его создавать не нужно.</p>
@@ -253,31 +204,30 @@ ssh-keygen -t rsa
 ssh-add ~/.ssh/id_rsa
 </pre></div>
 </div>
-<p>После этого в ISPmanager, если зайти под пользователем <code class="docutils literal"><span class="pre">mysite</span></code>, в папке <code class="docutils literal"><span class="pre">~/.ssh</span></code>, можно увидеть два файла id_rsa и id_rsa.pub (вместо id_rsa имя ключа, которое вы ввели). Скопируйте себе .pub файл, откройте в редакторе и всё его содержимое добавьте в настройки вашего сайта на Bitbucket.</p>
+<p>После этого в папке <code class="docutils literal"><span class="pre">~/.ssh</span></code>, можно увидеть два файла id_rsa и id_rsa.pub (вместо id_rsa имя ключа, которое вы ввели). Скопируйте себе .pub файл, откройте в редакторе и всё его содержимое добавьте в настройки вашего сайта на Bitbucket.</p>
 <p>Найти этот разделы можно так: <code class="docutils literal"><span class="pre">Страница</span> <span class="pre">проекта</span> <span class="pre">-&gt;</span> <span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">Deployment</span> <span class="pre">keys</span></code>.</p>
-<p>После этого необходимо склонировать с удаленного репозитория проект в наш сайт:</p>
+<p>После этого необходимо склонировать с удаленного репозитория проект на боевой сервер:</p>
 <div class="highlight-python"><div class="highlight"><pre>cd ~/путь_до_проекта/
 git init
 git remote add origin git@bitbucket.org:ваш_логин/mysite.ru.git
 git pull origin master
 </pre></div>
 </div>
-<p>После этого необходимо настроить БД. Для этого создаем базу данных <code class="docutils literal"><span class="pre">mysite</span></code> в кодировке UTF-8 и импортируем файл <code class="docutils literal"><span class="pre">v5.sql</span></code>.</p>
-<p>Далее находим в корне сайта файл <code class="docutils literal"><span class="pre">config.example.p</span></code>, его необходимо скопировать и переименовать в <code class="docutils literal"><span class="pre">config.p</span></code>. Открываем его и прописываем доступ к БД и убираем пути к NConvert. Вот что должно у вас получиться:</p>
+<p>Далее необходимо настроить БД. Файл``config.p`` должен быть похож на это:</p>
 <div class="highlight-python"><div class="highlight"><pre>$sql_table[mysite]
 $sql_login[root]
 $sql_pass[password]
 </pre></div>
 </div>
-<p>Файл <code class="docutils literal"><span class="pre">.htaccess.example</span></code> тоже копируем и переименовываем в <code class="docutils literal"><span class="pre">.htaccess</span></code>. Менять в нем ничео не нужно.</p>
+<p>В файле <a href="#id4"><span class="problematic" id="id5">``</span></a>.htaccess``менять ничего не нужно.</p>
 <p>И последнее, в папке <code class="docutils literal"><span class="pre">cgi-bin</span></code> необходимо выставить права доступа 755 следующим файлам <code class="docutils literal"><span class="pre">parser.cgi</span></code> и <code class="docutils literal"><span class="pre">NConvert</span></code>.</p>
 <div class="admonition warning">
 <p class="first admonition-title">Предупреждение</p>
 <p class="last">Если выдается ошибка Internal Server Error, то скорее всего побились бинарные файлы <a class="reference external" href="http://www.parser.ru/download/">parser.cgi</a> и <a class="reference external" href="http://www.xnview.com/en/nconvert/">NConvert</a>, необходимо скачать файлы под нужную ОС.</p>
 </div>
 </div>
-<div class="section" id="id4">
-<h2>Автоматизация деплоя<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="id6">
+<h2>Автоматизация деплоя<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Для того чтобы не залезать каждый раз на сервер и не выполнять команду <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code>, необходимо:</p>
 <ol class="arabic simple">
 <li>В папке <code class="docutils literal"><span class="pre">сgi-bin</span></code> создать файл <code class="docutils literal"><span class="pre">deploy.sh</span></code> и вставить следующий код:</li>
@@ -313,8 +263,6 @@ git status
 <li>в Bitbacket-е <code class="docutils literal"><span class="pre">Страница</span> <span class="pre">проекта</span> <span class="pre">-&gt;</span> <span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">Webhooks</span></code> необходимо добавить URL <code class="docutils literal"><span class="pre">http://mysite.ru/deploy.sh</span></code>.</li>
 </ol>
 <p>Теперь при каждом PUSH-е в удаленный репозиторий будет вызываться хук, который цепляет скрипт на сервере.</p>
-<p><strong>Ты сделал это!</strong></p>
-<p><a class="reference internal" href="_images/good.jpg"><img alt="good" src="_images/good.jpg" style="width: 600px;" /></a></p>
 </div>
 </div>
 
@@ -325,7 +273,7 @@ git status
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="provider.html" class="btn btn-neutral float-right" title="Провайдер" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="provider.html" class="btn btn-neutral float-right" title="Ядро доработок" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Документация для разработчиков ALMA v5" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
