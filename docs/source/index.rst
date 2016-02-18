@@ -16,3 +16,4 @@
    install
    provider
    view
+   eloquent
