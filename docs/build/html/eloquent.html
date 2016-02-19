@@ -88,11 +88,13 @@
 <li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Eloquent ORM</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id1">Основы использования</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">Получение всех записей</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id3">Получение записи по любому уникальному полю</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id4">Сохранение новой записи</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">Обновление записи</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#id6">Удаление записи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eloquent">Методы Eloquent</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Пример сохранения новой записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Пример обновления записи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Пример удаление записи</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Модель любой таблицы</a></li>
 </ul>
 </li>
 </ul>
@@ -157,40 +159,86 @@ $_table[roles]
 </div>
 <p>Когда модель определена, у вас всё готово для того, чтобы можно было выбирать и создавать записи.</p>
 </div>
-<div class="section" id="id2">
-<h2>Получение всех записей<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<div class="section" id="eloquent">
+<h2>Методы Eloquent<a class="headerlink" href="#eloquent" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descname">&#64;all[]</code></dt>
+<dd><p>Получение всех записей модели.</p>
 <div class="highlight-python"><div class="highlight"><pre>$roles[^role:all[]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;find[string $id]</code></dt>
+<dd><p>Получение записи по любому уникальному полю.</p>
+<div class="highlight-python"><div class="highlight"><pre>$roles[^role:find[1]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;new[]</code></dt>
+<dd><p>Создание нового объекта модели.</p>
+<div class="highlight-python"><div class="highlight"><pre>$roles[^role:new[]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;save[]</code></dt>
+<dd><p>Сохранение данных в БД (только динамический вызов).</p>
+<div class="highlight-python"><div class="highlight"><pre>$roles[^role.save[]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;delete[]</code></dt>
+<dd><p>Удаление данных из БД (только динамический вызов).</p>
+<div class="highlight-python"><div class="highlight"><pre>$roles[^role.delete[]]
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="id2">
+<h3>Пример сохранения новой записи<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h3>
+<div class="highlight-python"><div class="highlight"><pre>$roles[^role:new[]]
+$roles.name[Администратор]
+$roles[^role.save[]]
 </pre></div>
 </div>
 </div>
 <div class="section" id="id3">
-<h2>Получение записи по любому уникальному полю<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<h3>Пример обновления записи<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre>$roles[^role:find[1]]
+$roles.name[Терминатор]
+$roles[^role.save[]]
 </pre></div>
 </div>
 </div>
 <div class="section" id="id4">
-<h2>Сохранение новой записи<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>$roles[^role:new[]]
-$roles.name[Администратор]
-$roles[^user.save[]]
-</pre></div>
-</div>
-</div>
-<div class="section" id="id5">
-<h2>Обновление записи<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>$roles[^role:find[1]]
-$roles.name[Терминатор]
-$roles[^user.save[]]
-</pre></div>
-</div>
-</div>
-<div class="section" id="id6">
-<h2>Удаление записи<a class="headerlink" href="#id6" title="Ссылка на этот заголовок">¶</a></h2>
+<h3>Пример удаление записи<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
 <div class="highlight-python"><div class="highlight"><pre>$roles[^role:find[1]]
 ^role.delete[]
 </pre></div>
 </div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Модель любой таблицы<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Класс Eloquent позволяет обращаться к любой таблице без создания дополнительных классов.</p>
+<div class="highlight-python"><div class="highlight"><pre>^eloquent:table[roles]
+$roles[^eloquent:all[]]
+^eloquent:clear[]
+</pre></div>
+</div>
+<p>Метод <code class="docutils literal"><span class="pre">table</span></code> установливает название  таблицы, с которой Eloquent должен работать. В конце необходимо вызвать метод <code class="docutils literal"><span class="pre">clear</span></code>, для того чтобы сбросить название таблицы.</p>
 </div>
 </div>
 
