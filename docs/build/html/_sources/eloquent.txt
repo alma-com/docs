@@ -49,7 +49,15 @@ Eloquent ORM
 	::
 
 		$roles[^role:new[]]
+
+.. function:: @sql[]	
 	
+	Выполнение произвольного sql запроса. ``%TABLE%`` - название таблицы, ``%KEY%`` - ключ таблицы.
+	::
+
+		$roles[^role:sql[SELECT %KEY% FROM %TABLE% LIMIT 2]]
+
+		
 .. function:: @save[]	
 	
 	Сохранение данных в БД (только динамический вызов).
@@ -101,11 +109,11 @@ Eloquent ORM
 Класс Eloquent позволяет обращаться к любой таблице без создания дополнительных классов.
 ::
 
-	^eloquent:table[roles]
+	^eloquent:connect[roles]
 	$roles[^eloquent:all[]]
-	^eloquent:clear[]
+	^eloquent:close[]
 	
-Метод ``table`` установливает название  таблицы, с которой Eloquent должен работать. В конце необходимо вызвать метод ``clear``, для того чтобы сбросить название таблицы.
+Метод ``connect`` устанавливает соединение с таблицей, с которой Eloquent должен работать. В конце необходимо вызвать метод ``clear``, для того чтобы удалить соединение с таблицей.
 
 
 .. _`ActiveRecord`: https://ru.wikipedia.org/w/index.php?title=Special:Search&search=ActiveRecord

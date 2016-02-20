@@ -190,6 +190,15 @@ $_table[roles]
 
 <dl class="function">
 <dt>
+<code class="descname">&#64;sql[]</code></dt>
+<dd><p>Выполнение произвольного sql запроса. <code class="docutils literal"><span class="pre">%TABLE%</span></code> - название таблицы, <code class="docutils literal"><span class="pre">%KEY%</span></code> - ключ таблицы.</p>
+<div class="highlight-python"><div class="highlight"><pre>$roles[^role:sql[SELECT %KEY% FROM %TABLE% LIMIT 2]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
 <code class="descname">&#64;save[]</code></dt>
 <dd><p>Сохранение данных в БД (только динамический вызов).</p>
 <div class="highlight-python"><div class="highlight"><pre>$roles[^role.save[]]
@@ -233,12 +242,12 @@ $roles[^role.save[]]
 <div class="section" id="id5">
 <h2>Модель любой таблицы<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Класс Eloquent позволяет обращаться к любой таблице без создания дополнительных классов.</p>
-<div class="highlight-python"><div class="highlight"><pre>^eloquent:table[roles]
+<div class="highlight-python"><div class="highlight"><pre>^eloquent:connect[roles]
 $roles[^eloquent:all[]]
-^eloquent:clear[]
+^eloquent:close[]
 </pre></div>
 </div>
-<p>Метод <code class="docutils literal"><span class="pre">table</span></code> установливает название  таблицы, с которой Eloquent должен работать. В конце необходимо вызвать метод <code class="docutils literal"><span class="pre">clear</span></code>, для того чтобы сбросить название таблицы.</p>
+<p>Метод <code class="docutils literal"><span class="pre">connect</span></code> устанавливает соединение с таблицей, с которой Eloquent должен работать. В конце необходимо вызвать метод <code class="docutils literal"><span class="pre">clear</span></code>, для того чтобы удалить соединение с таблицей.</p>
 </div>
 </div>
 
