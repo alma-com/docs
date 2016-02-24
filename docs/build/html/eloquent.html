@@ -190,6 +190,15 @@ $_table[roles]
 
 <dl class="function">
 <dt>
+<code class="descname">&#64;empty[]</code></dt>
+<dd><p>Содержит пустоту, обычно используется при обновлении/добавлении записи.</p>
+<div class="highlight-python"><div class="highlight"><pre>$roles.name[^role:empty[]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
 <code class="descname">&#64;sql[]</code></dt>
 <dd><p>Выполнение произвольного sql запроса. <code class="docutils literal"><span class="pre">%TABLE%</span></code> - название таблицы, <code class="docutils literal"><span class="pre">%KEY%</span></code> - ключ таблицы.</p>
 <div class="highlight-python"><div class="highlight"><pre>$roles[^role:sql[SELECT %KEY% FROM %TABLE% LIMIT 2]]
