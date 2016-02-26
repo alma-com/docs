@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Класс url &mdash; Документация ALMA.CMS v5 1</title>
+  <title>Ajax форма &mdash; Документация ALMA.CMS v5 1</title>
   
 
   
@@ -33,8 +33,7 @@
 
   
     <link rel="top" title="Документация ALMA.CMS v5 1" href="index.html"/>
-        <link rel="next" title="Ajax форма" href="js-ajax-form.html"/>
-        <link rel="prev" title="Проверка ввода" href="validator.html"/> 
+        <link rel="prev" title="Класс url" href="url.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -90,11 +89,8 @@
 <li class="toctree-l1"><a class="reference internal" href="eloquent.html">Eloquent ORM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Авторизация</a></li>
 <li class="toctree-l1"><a class="reference internal" href="validator.html">Проверка ввода</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Класс url</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Методы класса</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="js-ajax-form.html">Ajax форма</a></li>
+<li class="toctree-l1"><a class="reference internal" href="url.html">Класс url</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Ajax форма</a></li>
 </ul>
 
             
@@ -125,7 +121,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Класс url</li>
+    <li>Ajax форма</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -137,65 +133,70 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="url">
-<h1>Класс url<a class="headerlink" href="#url" title="Ссылка на этот заголовок">¶</a></h1>
-<p>Данный класс помогает при работе с url.</p>
-<div class="section" id="id1">
-<h2>Методы класса<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
-<dl class="function">
-<dt>
-<code class="descname">&#64;to[]</code></dt>
-<dd><p>Редирект к URL. Может некорректно работать с относительными путями.</p>
-<div class="highlight-python"><div class="highlight"><pre>^url:to[/my/page/please/now]
+  <div class="section" id="ajax">
+<h1>Ajax форма<a class="headerlink" href="#ajax" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Рассмотрим пример работы Ajax формы:</p>
+<div class="highlight-python"><div class="highlight"><pre>&lt;form method=&quot;POST&quot; action=&quot;reg.html&quot; class=&quot;js-ajax-form&quot;&gt;
+&lt;span class=&quot;js-alert&quot;&gt;&lt;/span&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Имя:&lt;/td&gt;
+    &lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span class=&quot;js-has-error&quot; data-field=&quot;name&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;E-mail:&lt;/td&gt;
+    &lt;td&gt;&lt;input type=&quot;email&quot; name=&quot;email&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span class=&quot;js-has-error&quot; data-field=&quot;email&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Пароль:&lt;/td&gt;
+    &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span class=&quot;js-has-error&quot; data-field=&quot;password&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Подтверждение пароля:&lt;/td&gt;
+    &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password_confirmation&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;span class=&quot;js-has-error&quot; data-field=&quot;password_confirmation&quot;&gt;&lt;/span&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;&lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Регистрация&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
 </pre></div>
 </div>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descname">&#64;now[]</code></dt>
-<dd><p>Возвращает текущий URL без имени домена.</p>
-<div class="highlight-python"><div class="highlight"><pre>^url:now[]
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">js-ajax-form</span></code> - Класс для инициализации Ajax формы.</li>
+<li><code class="docutils literal"><span class="pre">js-alert</span></code> - Место куда будут выводиться сообщения.</li>
+<li><code class="docutils literal"><span class="pre">js-has-error[data-field=&quot;name_field&quot;]</span></code> - Место куда будут выводиться сообщения относящиеся к полю <code class="docutils literal"><span class="pre">name_field</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">has-error</span></code> - класс добавляемый к полям, у которых есть сообщение.</li>
+</ul>
+<p>Для того чтобы Ajax форма автоматически понимала, что ей делать, необходимо на обрабатывающей форму странице сформировать JSON следующего вида:</p>
+<div class="highlight-python"><div class="highlight"><pre>{
+  &quot;status&quot;: &quot;error&quot;, //Статус провреки success или error
+  &quot;message&quot;: {
+    &quot;field1&quot; : &quot;Поле field1 обязательно для заполнения.
+  },
+  &quot;url&quot; : &quot;/my/url&quot; //Редирект к URL. Является необязательным.
+}
 </pre></div>
 </div>
-</dd></dl>
+<p>Данный JSON быстро сформировать поможет класс <a class="reference external" href="validator.html">validator</a>. Рассмотрим пример обрабатывающей форму страницы:</p>
+<div class="highlight-python"><div class="highlight"><pre>$hash[
+  $.email[required|email|unique:users]
+  $.password[required|min:6|max:255]
+  $.password_confirmation[same:password]
+]
+$hash_result[^validator:make[$hash]]
 
-<dl class="function">
-<dt>
-<code class="descname">&#64;root[]</code></dt>
-<dd><p>Возвращает главный URL сайта без имени домена.</p>
-<div class="highlight-python"><div class="highlight"><pre>^url:root[]
+^if($hash_result.status ne &#39;error&#39;){
+  ...
+  $hash_result.url[^auth:get_url_login[]]
+}
+
+$result[^json:string[$hash_result]]
 </pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descname">&#64;root_to[]</code></dt>
-<dd><p>Редирект на главный URL сайта.</p>
-<div class="highlight-python"><div class="highlight"><pre>^url:root_to[]
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descname">&#64;back[url_default]</code></dt>
-<dd><p>Возвращает предыдущий URL без имени домена. Если нет предыдущего URL, то возвращает <code class="docutils literal"><span class="pre">$url_default</span></code>, по умолчанию главный URL сайта.</p>
-<div class="highlight-python"><div class="highlight"><pre>^url:back[]
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="function">
-<dt>
-<code class="descname">&#64;back_to[url_default]</code></dt>
-<dd><p>Редирект в предыдущий URL. Если нет предыдущего URL, то возвращает <code class="docutils literal"><span class="pre">$url_default</span></code>, по умолчанию главный URL сайта.</p>
-<div class="highlight-python"><div class="highlight"><pre>^url:back_to[]
-</pre></div>
-</div>
-</dd></dl>
-
 </div>
 </div>
 
@@ -206,10 +207,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="js-ajax-form.html" class="btn btn-neutral float-right" title="Ajax форма" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="validator.html" class="btn btn-neutral" title="Проверка ввода" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="url.html" class="btn btn-neutral" title="Класс url" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

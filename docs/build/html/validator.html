@@ -33,7 +33,8 @@
 
   
     <link rel="top" title="Документация ALMA.CMS v5 1" href="index.html"/>
-        <link rel="prev" title="Класс url" href="url.html"/> 
+        <link rel="next" title="Класс url" href="url.html"/>
+        <link rel="prev" title="Авторизация" href="auth.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -88,13 +89,14 @@
 <li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eloquent.html">Eloquent ORM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Авторизация</a></li>
-<li class="toctree-l1"><a class="reference internal" href="url.html">Класс url</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Проверка ввода</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#id2">Пример использования</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id3">Методы класса</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#id4">Доступные правила проверки</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="url.html">Класс url</a></li>
+<li class="toctree-l1"><a class="reference internal" href="js-ajax-form.html">Ajax форма</a></li>
 </ul>
 
             
@@ -174,7 +176,7 @@ $hash_result[^validator:make[$hash]]
 ]
 </pre></div>
 </div>
-<p>Если ваша форма использует класс <a class="reference external" href="js-ajax-form.html">js-ajax-form</a>, то вы можете сразу информировать пользователя о том,
+<p>Если ваша форма использует класс <a class="reference external" href="js-ajax-form.html">Ajax форму</a>, то вы можете сразу информировать пользователя о том,
 что поля неправильно заполнены. Для этого необходимо в формате JSON вернуть hash <code class="docutils literal"><span class="pre">$hash_result</span></code>. Вот полный пример:</p>
 <div class="highlight-python"><div class="highlight"><pre>$hash[
   $.email[required|email|unique:users]
@@ -255,8 +257,10 @@ $result[^json:string[$hash_result]]
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="url.html" class="btn btn-neutral float-right" title="Класс url" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="url.html" class="btn btn-neutral" title="Класс url" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="auth.html" class="btn btn-neutral" title="Авторизация" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

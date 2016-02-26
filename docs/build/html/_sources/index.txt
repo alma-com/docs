@@ -18,5 +18,6 @@
    view
    eloquent
    auth
-   url
    validator
+   url
+   js-ajax-form
