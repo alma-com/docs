@@ -1,0 +1,409 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Авторизация &mdash; Документация ALMA.CMS v5 1</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Документация ALMA.CMS v5 1" href="index.html"/>
+        <link rel="prev" title="Eloquent ORM" href="eloquent.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ALMA.CMS v5
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="provider.html">Ядро доработок</a></li>
+<li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eloquent.html">Eloquent ORM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Авторизация</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Методы класса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Вывод стандартных форм</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Пример создание своей формы авторизации</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ALMA.CMS v5</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Авторизация</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Авторизация<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Класс авторизации находится <code class="docutils literal"><span class="pre">app\auth.p</span></code>. Данный класс можно расширять собственными методами, а также переопределять встроенные методы.</p>
+<p>По умолчанию логином является E-mail.</p>
+<div class="section" id="id2">
+<h2>Методы класса<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descname">&#64;login[id_user]</code></dt>
+<dd><p>Ручной вход в систему по id или логину пользователя.</p>
+<div class="highlight-python"><div class="highlight"><pre>^auth:login[test@gmail.com]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;logout[]</code></dt>
+<dd><p>Выход из системы текущего авторизованного пользователя.</p>
+<div class="highlight-python"><div class="highlight"><pre>^auth:logout[]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;logout_all[id_user]</code></dt>
+<dd><p>Выход пользователя из системы со всех устройств. Где <code class="docutils literal"><span class="pre">$id_user</span></code> - id или логин пользователя.</p>
+<div class="highlight-python"><div class="highlight"><pre>^auth:logout_all[test@gmail.com]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;attempt[login;password;remember]</code></dt>
+<dd><p>Попытка авторизации пользователя. Возвращает <code class="docutils literal"><span class="pre">true</span></code> или <code class="docutils literal"><span class="pre">false</span></code>. Для того чтобы запомнить пользователя, необходимо передать <code class="docutils literal"><span class="pre">$remember</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre>^if(^auth:attempt[test@gmail.com;MyPass;1]){
+  Вы авторизованны!
+}{
+  Неудачная попытка
+}
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;user[]</code></dt>
+<dd><p>Получение текущего авторизованного пользователя. Возвращает модель <a class="reference external" href="eloquent.html">Eloquent</a>.</p>
+<div class="highlight-python"><div class="highlight"><pre>$user[^auth:user[]]
+$user.email - вывод e-mail пользователя
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;check[]</code></dt>
+<dd><p>Определение, авторизован ли текущий пользователь. Возвращает <code class="docutils literal"><span class="pre">true</span></code> или <code class="docutils literal"><span class="pre">false</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre>^if(^auth:check[]){
+  Вы авторизованны!
+}{
+  Пожалуйста авторизуйтесь!
+}
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_url_login[]</code></dt>
+<dd><p>Получение URL авторизации.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_action_login[]</code></dt>
+<dd><p>Получение URL отправки формы при авторизации.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_url_forgot[]</code></dt>
+<dd><p>Получение URL забыли пароль.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_action_forgot[]</code></dt>
+<dd><p>Получение URL отправки формы забыли пароль.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_url_registration[]</code></dt>
+<dd><p>Получение URL регистрации.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_action_registration[]</code></dt>
+<dd><p>Получение URL отправки формы при регистрации пользователя.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_url_personal[]</code></dt>
+<dd><p>Получение URL личного кабинета.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id3">
+<h2>Вывод стандартных форм<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descname">&#64;show_form_login[]</code></dt>
+<dd><p>Форма авторизации.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;login_request[]</code></dt>
+<dd><p>Выполнение запроса на авторизацию пользователя.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;show_form_registration[]</code></dt>
+<dd><p>Форма регистрации.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;registration_request[]</code></dt>
+<dd><p>Выполнение запроса на регистрацию пользователя.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;show_form_forgot[]</code></dt>
+<dd><p>Форма восстановления пароля.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;forgot_request[]</code></dt>
+<dd><p>Выполнение запроса на восстановление пароля.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;show_form_forgot_password[]</code></dt>
+<dd><p>Форма изменения пароля при восстановлении пароля.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;forgot_password_request[]</code></dt>
+<dd><p>Выполнение запроса на сброс пароля.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h2>Пример создание своей формы авторизации<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Для того чтобы переопределить стандартную форму авторизации, необходимо в <code class="docutils literal"><span class="pre">app\auth.p</span></code>, создать метод <code class="docutils literal"><span class="pre">&#64;show_form_login[]</span></code> со своей формой.</p>
+<div class="highlight-python"><div class="highlight"><pre>@CLASS
+auth
+
+...
+
+@show_form_login[]
+&lt;form method=&quot;POST&quot; action=&quot;^auth:get_action_login[]&quot; class=&quot;js-ajax-form&quot;&gt;
+&lt;span class=&quot;js-alert&quot;&gt;&lt;/span&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;E-mail:&lt;/td&gt;
+    &lt;td&gt;&lt;input type=&quot;email&quot; name=&quot;email&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Пароль:&lt;/td&gt;
+    &lt;td&gt;&lt;input type=&quot;password&quot; name=&quot;password&quot; value=&quot;&quot;&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;label for=&quot;remember&quot;&gt;
+        &lt;input type=&quot;checkbox&quot; id=&quot;remember&quot; name=&quot;remember&quot; value=&quot;1&quot;&gt;
+        Запомнить меня на этом компьютере
+      &lt;/label&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan=&quot;2&quot;&gt;
+      &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Войти&quot;&gt;
+      &lt;a href=&quot;^auth:get_url_forgot[]&quot;&gt;Забыли пароль?&lt;/a&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/form&gt;
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="eloquent.html" class="btn btn-neutral" title="Eloquent ORM" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Alexandr Zubarev.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
