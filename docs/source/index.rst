@@ -18,3 +18,4 @@
    view
    eloquent
    auth
+   url

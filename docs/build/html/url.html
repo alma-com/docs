@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Документация для разработчиков ALMA v5 &mdash; Документация ALMA.CMS v5 1</title>
+  <title>Класс url &mdash; Документация ALMA.CMS v5 1</title>
   
 
   
@@ -32,8 +32,8 @@
   
 
   
-    <link rel="top" title="Документация ALMA.CMS v5 1" href="#"/>
-        <link rel="next" title="Установка" href="install.html"/> 
+    <link rel="top" title="Документация ALMA.CMS v5 1" href="index.html"/>
+        <link rel="prev" title="Авторизация" href="auth.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -51,7 +51,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> ALMA.CMS v5
+            <a href="index.html" class="icon icon-home"> ALMA.CMS v5
           
 
           
@@ -82,13 +82,16 @@
           
             
             
-                <ul>
+                <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a></li>
 <li class="toctree-l1"><a class="reference internal" href="provider.html">Ядро доработок</a></li>
 <li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eloquent.html">Eloquent ORM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Авторизация</a></li>
-<li class="toctree-l1"><a class="reference internal" href="url.html">Класс url</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Класс url</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Методы класса</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -102,7 +105,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">ALMA.CMS v5</a>
+        <a href="index.html">ALMA.CMS v5</a>
       </nav>
 
 
@@ -117,9 +120,9 @@
 
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Документация для разработчиков ALMA v5</li>
+    <li>Класс url</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -131,47 +134,65 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="alma-v5">
-<h1>Документация для разработчиков ALMA v5<a class="headerlink" href="#alma-v5" title="Ссылка на этот заголовок">¶</a></h1>
+  <div class="section" id="url">
+<h1>Класс url<a class="headerlink" href="#url" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Данный класс помогает при работе с url.</p>
 <div class="section" id="id1">
-<h2>Оглавление:<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="install.html#alma-cms-v5">Локальная установка ALMA.CMS v5</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#id2">Создание репозитория для сайта</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#id3">Деплой на боевой сервер</a></li>
-<li class="toctree-l2"><a class="reference internal" href="install.html#id6">Автоматизация деплоя</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="provider.html">Ядро доработок</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="provider.html#id2">Помощники</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="view.html#id2">Основы использования</a></li>
-<li class="toctree-l2"><a class="reference internal" href="view.html#id3">Вывод представления</a></li>
-<li class="toctree-l2"><a class="reference internal" href="view.html#id4">Передача данных во все представления</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="eloquent.html">Eloquent ORM</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="eloquent.html#id1">Основы использования</a></li>
-<li class="toctree-l2"><a class="reference internal" href="eloquent.html#eloquent">Методы Eloquent</a></li>
-<li class="toctree-l2"><a class="reference internal" href="eloquent.html#id4">Модель любой таблицы</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="auth.html">Авторизация</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="auth.html#id2">Методы класса</a></li>
-<li class="toctree-l2"><a class="reference internal" href="auth.html#id3">Вывод стандартных форм</a></li>
-<li class="toctree-l2"><a class="reference internal" href="auth.html#id4">Пример создание своей формы авторизации</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="url.html">Класс url</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="url.html#id1">Методы класса</a></li>
-</ul>
-</li>
-</ul>
+<h2>Методы класса<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descname">&#64;to[]</code></dt>
+<dd><p>Редирект к URL. Может некорректно работать с относительными путями.</p>
+<div class="highlight-python"><div class="highlight"><pre>^url:to[/my/page/please/now]
+</pre></div>
 </div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;now[]</code></dt>
+<dd><p>Возвращает текущий URL без имени домена.</p>
+<div class="highlight-python"><div class="highlight"><pre>^url:now[]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;root[]</code></dt>
+<dd><p>Возвращает главный URL сайта без имени домена.</p>
+<div class="highlight-python"><div class="highlight"><pre>^url:root[]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;root_to[]</code></dt>
+<dd><p>Редирект на главный URL сайта.</p>
+<div class="highlight-python"><div class="highlight"><pre>^url:root_to[]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;back[url_default]</code></dt>
+<dd><p>Возвращает предыдущий URL без имени домена. Если нет предыдущего URL, то возвращает <code class="docutils literal"><span class="pre">$url_default</span></code>, по умолчанию главный URL сайта.</p>
+<div class="highlight-python"><div class="highlight"><pre>^url:back[]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;back_to[url_default]</code></dt>
+<dd><p>Редирект в предыдущий URL. Если нет предыдущего URL, то возвращает <code class="docutils literal"><span class="pre">$url_default</span></code>, по умолчанию главный URL сайта.</p>
+<div class="highlight-python"><div class="highlight"><pre>^url:back_to[]
+</pre></div>
+</div>
+</dd></dl>
+
 </div>
 </div>
 
@@ -182,8 +203,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="install.html" class="btn btn-neutral float-right" title="Установка" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+        <a href="auth.html" class="btn btn-neutral" title="Авторизация" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
