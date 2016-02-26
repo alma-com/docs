@@ -92,10 +92,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#eloquent">Методы Eloquent</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Пример сохранения новой записи</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">Пример обновления записи</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Пример удаление записи</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id5">Модель любой таблицы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Модель любой таблицы</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="auth.html">Авторизация</a></li>
@@ -211,8 +210,9 @@ $_table[roles]
 <dl class="function">
 <dt>
 <code class="descname">&#64;save[]</code></dt>
-<dd><p>Сохранение данных в БД (только динамический вызов).</p>
-<div class="highlight-python"><div class="highlight"><pre>$roles[^role.save[]]
+<dd><p>Сохранение данных в БД (только динамический вызов). Работает только для одной записи.</p>
+<div class="highlight-python"><div class="highlight"><pre>$roles[^role:find[admin]]
+$roles[^role.save[]]
 </pre></div>
 </div>
 </dd></dl>
@@ -220,8 +220,46 @@ $_table[roles]
 <dl class="function">
 <dt>
 <code class="descname">&#64;delete[]</code></dt>
-<dd><p>Удаление данных из БД (только динамический вызов).</p>
-<div class="highlight-python"><div class="highlight"><pre>$roles[^role.delete[]]
+<dd><p>Удаление данных из БД (только динамический вызов). Работает как для одной записи, так и для многих сразу.</p>
+<div class="highlight-python"><div class="highlight"><pre>$roles[^role:all[]]
+$roles[^role.delete[]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_table[]</code></dt>
+<dd><p>Получение название таблицы.</p>
+<div class="highlight-python"><div class="highlight"><pre>$name[^role:get_table[]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_key[]</code></dt>
+<dd><p>Получение название ключа таблицы.</p>
+<div class="highlight-python"><div class="highlight"><pre>$key[^role:get_key[]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_id[]</code></dt>
+<dd><p>Получение id записи, работает если только одна запись в моделе.</p>
+<div class="highlight-python"><div class="highlight"><pre>$roles[^role:find[admin]]
+$id[^role:get_id[]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;get_unique_fields[]</code></dt>
+<dd><p>Получение списка уникальных столбцов.</p>
+<div class="highlight-python"><div class="highlight"><pre>$fields[^role:get_unique_fields[]]
 </pre></div>
 </div>
 </dd></dl>
@@ -242,16 +280,9 @@ $roles[^role.save[]]
 </pre></div>
 </div>
 </div>
+</div>
 <div class="section" id="id4">
-<h3>Пример удаление записи<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>$roles[^role:find[1]]
-^role.delete[]
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="id5">
-<h2>Модель любой таблицы<a class="headerlink" href="#id5" title="Ссылка на этот заголовок">¶</a></h2>
+<h2>Модель любой таблицы<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Класс Eloquent позволяет обращаться к любой таблице без создания дополнительных классов.</p>
 <div class="highlight-python"><div class="highlight"><pre>^eloquent:connect[roles]
 $roles[^eloquent:all[]]
