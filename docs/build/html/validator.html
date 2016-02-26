@@ -1,0 +1,318 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Проверка ввода &mdash; Документация ALMA.CMS v5 1</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Документация ALMA.CMS v5 1" href="index.html"/>
+        <link rel="prev" title="Класс url" href="url.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ALMA.CMS v5
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Установка</a></li>
+<li class="toctree-l1"><a class="reference internal" href="provider.html">Ядро доработок</a></li>
+<li class="toctree-l1"><a class="reference internal" href="view.html">Представления</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eloquent.html">Eloquent ORM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="auth.html">Авторизация</a></li>
+<li class="toctree-l1"><a class="reference internal" href="url.html">Класс url</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Проверка ввода</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Пример использования</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Методы класса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Доступные правила проверки</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">ALMA.CMS v5</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Проверка ввода</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>Проверка ввода<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h1>
+<p>Для проверки ввода и получения сообщений об ошибках разработан класс validator.</p>
+<div class="section" id="id2">
+<h2>Пример использования<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
+<p>Рассмотрим пример регистрации пользователя. Необходимо проверить что:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li>Пользователь заполнил поле E-mail, пароль и подтверждение пароля.</li>
+<li>Введенный E-mail является действительно E-mail.</li>
+<li>Введенный E-mail не занят в нашей базе данных.</li>
+<li>Длина пароля должна быть более 6 символов и менее 255.</li>
+<li>Введенный пароль совпадает с подтверждением пароля.</li>
+</ol>
+</div></blockquote>
+<p>Даа, получается очень много проверок нужно сделать перед регистрацией пользователя. Но при помощи класса validator, все эти проверки можно уместить в 6 строк кода. Вот смотрите:</p>
+<div class="highlight-python"><div class="highlight"><pre>$hash[
+  $.email[required|email|unique:users]
+  $.password[required|min:6|max:255]
+  $.password_confirmation[same:password]
+]
+$hash_result[^validator:make[$hash]]
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">$.email</span></code> - это название поля.</p>
+<p><code class="docutils literal"><span class="pre">required</span></code> - это условие что поле обязательно для заполнения.</p>
+<p><code class="docutils literal"><span class="pre">email</span></code> - это условие что поле должно быть в формате E-mail.</p>
+<p>И т.д. В конце вызывается метод <code class="docutils literal"><span class="pre">make</span></code>, который возвращает hash следующего вида:</p>
+<div class="highlight-python"><div class="highlight"><pre>$hash[
+  $.status[error] - результат проверки success или error
+  $.message[
+    $.field1[Поле &quot;field1&quot; обязательно для заполнения.]
+    $.field2[Поле &quot;field2&quot; имеет неправильный формат.]
+  ]
+]
+</pre></div>
+</div>
+<p>Если ваша форма использует класс <a class="reference external" href="js-ajax-form.html">js-ajax-form</a>, то вы можете сразу информировать пользователя о том,
+что поля неправильно заполнены. Для этого необходимо в формате JSON вернуть hash <code class="docutils literal"><span class="pre">$hash_result</span></code>. Вот полный пример:</p>
+<div class="highlight-python"><div class="highlight"><pre>$hash[
+  $.email[required|email|unique:users]
+  $.password[required|min:6|max:255]
+  $.password_confirmation[same:password]
+]
+$hash_result[^validator:make[$hash]]
+
+^if($hash_result.status ne &#39;error&#39;){
+  ...
+  $hash_result.url[^auth:get_url_login[]]
+}
+
+$result[^json:string[$hash_result]]
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Методы класса<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descname">&#64;make[hash;extra_names]</code></dt>
+<dd><p>Валидация ввода. <code class="docutils literal"><span class="pre">$extra_names</span></code> - дополнительный hash с красивыми именами</p>
+<div class="highlight-python"><div class="highlight"><pre>^validator:make[$.square[required];$.square[Площадь]]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;beatiful[key]</code></dt>
+<dd><p>Получение красивого названия поля</p>
+<div class="highlight-python"><div class="highlight"><pre>^validator:beatiful[square]
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<code class="descname">&#64;is_email[email]</code></dt>
+<dd><p>Проверка формата E-mail. Возвращает <code class="docutils literal"><span class="pre">true</span></code> или <code class="docutils literal"><span class="pre">false</span></code>.</p>
+<div class="highlight-python"><div class="highlight"><pre>^if(^validator:is_email[test@gmail.com]){
+  Правильный формат
+}
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="id4">
+<h2>Доступные правила проверки<a class="headerlink" href="#id4" title="Ссылка на этот заголовок">¶</a></h2>
+<dl class="glossary docutils">
+<dt id="term-between-min-max">between:min,max</dt>
+<dd>Поле должно быть числом в диапазоне от <code class="docutils literal"><span class="pre">min</span></code> до <code class="docutils literal"><span class="pre">max</span></code>.</dd>
+<dt id="term-email">email</dt>
+<dd>Поле должно быть корректным адресом E-mail.</dd>
+<dt id="term-exist-table">exist:table</dt>
+<dd>Поле должно существовать в заданной таблице <code class="docutils literal"><span class="pre">table</span></code>.</dd>
+<dt id="term-max-value">max:value</dt>
+<dd>Значение поля должно быть меньше или равно <code class="docutils literal"><span class="pre">value</span></code>.</dd>
+<dt id="term-min-value">min:value</dt>
+<dd>Значение поля должно быть более или равно <code class="docutils literal"><span class="pre">value</span></code>.</dd>
+<dt id="term-required">required</dt>
+<dd>Проверяемое поле должно иметь непустое значение.</dd>
+<dt id="term-same-field">same:field</dt>
+<dd>Поле должно иметь то же значение, что и поле <code class="docutils literal"><span class="pre">field</span></code>.</dd>
+<dt id="term-unique-table-exceptid">unique:table,exceptId</dt>
+<dd>Значение поля должно быть уникальным в заданной таблице <code class="docutils literal"><span class="pre">table</span></code>. Если задан <code class="docutils literal"><span class="pre">exceptId</span></code>, то из проверки исключается данная запись
+(Обычно это нужно при редактировании записи, чтобы исключить самого себя из проверки).</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="url.html" class="btn btn-neutral" title="Класс url" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Alexandr Zubarev.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

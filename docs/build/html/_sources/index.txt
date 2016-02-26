@@ -19,3 +19,4 @@
    eloquent
    auth
    url
+   validator
